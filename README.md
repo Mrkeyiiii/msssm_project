@@ -18,6 +18,7 @@ The independent variables of our model will be:
 * Threat level of the attacker
 * Starting position of the attacker
 * Accuracy of the attacker
+
 By varying these parameters we would like to simulate the evacuation procedure and dynamics of the crowd.
 
 Our model is an abstraction of the problem we would like to tackle, containing many simplifications that will make it easier for us to reach some conclusions. Example of some simplifications/hypothesis of our model are:
@@ -55,6 +56,7 @@ Our model is an abstraction of the problem we would like to tackle, containing m
 
 [1] Dirk Helbing, Illes Farkas & Tamas Vicsek (2000): Simulating dynamical features
 of escape panic
+
 [2] Hans Hardmeier, Andrin Jenal , Beat Kueng, Felix Thaler (2012): [MultiLevelEvacuation_with_custom_C_code](https://github.com/msssm/MultiLevelEvacuation_with_custom_C_code)
 
 
