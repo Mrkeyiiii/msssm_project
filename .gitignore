@@ -1,0 +1,11 @@
+# LaTeX compilation files
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+
+# LaTeX flashtalk pdf file
+/flashtalk/beamer/flashtalk.pdf
