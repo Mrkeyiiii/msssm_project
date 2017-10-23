@@ -36,7 +36,6 @@ Our model is an abstraction of the problem we would like to tackle, containing m
 	2. What happens if an attacker is situated near an exit?
 3. How does the accuracy of the attacker affect the evacuation?
 	1. What happens when the accuracy is really high? How should the crowd react?
-	2. What happens when the accuracy is really high? How should the crowd react?
 4. How does the layout of the room affect the evacuation?
 	1. Is there a problem if there isn’t more than one exit?
 	2. How should the exits be placed?
