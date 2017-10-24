@@ -15,9 +15,9 @@ Modelling and simulating the evacuation procedure in a public shooting could hel
 We are going to use a social force model to capture the crowd dynamics, proposed in [1]. The simulations of this model will be conducted using the work of a previous MSSSM group [2]. Both the model and the simulation code have led to interesting and useful results in past work, and therefore will probably be a sufficient toolset for our analysis. We will extend said model so that we can include the presence and dynamics of an attacker in a crowd that is trying to evacuate.
 
 The independent variables of our model will be:
-* Threat level of the attacker
-* Starting position of the attacker
-* Accuracy of the attacker
+* A fixed starting position of the attacker
+* Mortality of the attacker (which decreases with distance)
+
 
 By varying these parameters we would like to simulate the evacuation procedure and dynamics of the crowd.
 
