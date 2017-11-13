@@ -1,3 +1,5 @@
+mkdir('bin')
+
 mex -output 'bin/fastSweeping' 'c/fastSweeping.c'
 mex -output 'bin/getNormalizedGradient' 'c/getNormalizedGradient.c'
 mex -output 'bin/lerp2' 'c/lerp2.c'
