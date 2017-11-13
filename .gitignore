@@ -1,3 +1,7 @@
+# MATLAB temporary and mex files
+*.m~
+*.mex*
+
 # LaTeX compilation files
 *.aux
 *.log
