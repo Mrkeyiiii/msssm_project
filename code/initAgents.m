@@ -29,6 +29,7 @@ for i=1:data.floor_count
             data.floor(i).agents(cur_agent).f = [0, 0];
             data.floor(i).agents(cur_agent).m = data.m;
             data.floor(i).agents(cur_agent).v0 = data.v0;
+            data.floor(i).agents(cur_agent).exit = randi(length(data.floor(i).img_exit));
             
             tries = 10;
             while tries > 0

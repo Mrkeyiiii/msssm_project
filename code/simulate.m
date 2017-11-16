@@ -22,6 +22,7 @@ while (data.time < data.duration)
     data = addDesiredForce(data);
     data = addWallForce(data);
     data = addAgentRepulsiveForce(data);
+    data = addExitForce(data);
     data = applyForcesAndMove(data);
     
     % do the plotting
