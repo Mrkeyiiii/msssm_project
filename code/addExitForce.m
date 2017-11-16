@@ -8,11 +8,7 @@ for fi = 1:data.floor_count
         % get agent's data
         p = data.floor(fi).agents(ai).p;
         r = data.floor(fi).agents(ai).r;
-        exit = data.floor(fi).agents(ai).exit;
-        exitC = data.floor(fi).img_exitC{exit};
-        
-        e = (exitC - p) * data.meter_per_pixel;
-        e = e / norm(e);
+        e = data.floor(fi).agents(ai).e;
         
         % get force
         Fi = [0 0];

@@ -19,6 +19,7 @@ fprintf('Start simulation...\n');
 
 while (data.time < data.duration)
     tstart=tic;
+    data = chooseExit(data);
     data = addDesiredForce(data);
     data = addWallForce(data);
     data = addAgentRepulsiveForce(data);
