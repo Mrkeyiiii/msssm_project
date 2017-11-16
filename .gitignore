@@ -1,6 +1,7 @@
 # MATLAB temporary and mex files
 *.m~
 *.mex*
+*.asv
 
 # LaTeX compilation files
 *.aux
