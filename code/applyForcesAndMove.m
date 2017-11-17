@@ -68,10 +68,11 @@ for fi = 1:data.floor_count
         end
         
         % check if agent reached an exit
-        exit = data.floor(fi).agents(ai).exit;
-        if data.floor(fi).img_exit{exit}(round(newp(1)), round(newp(2)))
-            exited(ai) = 1;
-            data.agents_exited = data.agents_exited +1;
+        for k = 1 : length(data.floor(fi).img_exit)
+            if data.floor(fi).img_exit{k}(round(newp(1)), round(newp(2)))
+                exited(ai) = 1;
+                data.agents_exited = data.agents_exited +1;
+            end
         end
     end
     
