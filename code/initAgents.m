@@ -30,6 +30,8 @@ for i=1:data.floor_count
             data.floor(i).agents(cur_agent).m = data.m;
             data.floor(i).agents(cur_agent).v0 = data.v0;
             data.floor(i).agents(cur_agent).exit = 0;
+            e = 2*pi*rand();
+            data.floor(i).agents(cur_agent).e = [cos(e) sin(e)];
             
             tries = 10;
             while tries > 0
