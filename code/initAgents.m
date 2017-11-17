@@ -33,7 +33,7 @@ for i=1:data.floor_count
             e = 2*pi*rand();
             data.floor(i).agents(cur_agent).e = [cos(e) sin(e)];
             
-            tries = 10;
+            tries = 1000;
             while tries > 0
                 % randomly pick a spot and check if it's free
                 idx = randi(length(x));
