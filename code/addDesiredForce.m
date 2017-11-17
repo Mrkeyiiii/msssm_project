@@ -16,10 +16,10 @@ for fi = 1:data.floor_count
         v = data.floor(fi).agents(ai).v;
         e = data.floor(fi).agents(ai).e;
         
-        r_max = data.p_radius / data.meter_per_pixel;
+        r_max = data.p_radius / data.pixel_per_meter;
         idx = rangeQuery(tree, p(1) - r_max, p(1) + r_max, ...
                                p(2) - r_max, p(2) + r_max)';
-        v_avg = 0;
+        v_avg = [0 0];
         for aj = idx
             if ai ~= aj
                 v_avg = v_avg + data.floor(fi).agents(aj).v;
@@ -27,6 +27,8 @@ for fi = 1:data.floor_count
         end
         if length(idx) > 1
             v_avg = v_avg / (length(idx)-1);
+        else
+            v_avg = v0*e;
         end
         u0 = (1-data.p)*v0*e + data.p*v_avg;
         
