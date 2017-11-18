@@ -5,6 +5,7 @@ addpath('bin','c')
 
 if nargin==0
     config_file='data/config_test.conf';
+    config_file='data/config_test_2.conf';
 end
 
 fprintf('Load config file...\n');
