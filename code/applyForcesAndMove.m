@@ -59,6 +59,13 @@ for fi = 1:data.floor_count
         data.floor(fi).agents(ai).v = v;
         data.floor(fi).agents(ai).p = newp;
         
+        % update agent's direction
+        if norm(v) ~= 0
+            data.floor(fi).agents(ai).e = v / norm(v);
+        else
+            data.floor(fi).agents(ai).e = [0 0];
+        end
+        
         % reset forces for next timestep
         data.floor(fi).agents(ai).f = [0 0];
         
