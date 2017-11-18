@@ -66,6 +66,10 @@ for fi = 1:data.floor_count
         Uik = deUik * (1-data.E) + diUik * data.E;
         [Ubest,kbest] = max(Uik);
         if exit == 0
+            if max(Uik) == 0
+                data.floor(fi).agents(ai).e = [0 0];
+                continue
+            end
             exit = kbest;
         else
             Ucurr = Uik(exit);
