@@ -9,6 +9,11 @@ function radius = getAgentRadius()
     radius = data.r_min + (data.r_max-data.r_min)*rand();
 end
 
+function radius = getAgentMass()
+    %radius of an agent in meters
+    radius = data.m_min + (data.m_max-data.m_min)*rand();
+end
+
 data.agents_exited = 0; %how many agents have reached the exit
 data.total_agent_count = 0;
 
@@ -27,7 +32,7 @@ for i=1:data.floor_count
             data.floor(i).agents(cur_agent).r = getAgentRadius();
             data.floor(i).agents(cur_agent).v = [0, 0];
             data.floor(i).agents(cur_agent).f = [0, 0];
-            data.floor(i).agents(cur_agent).m = data.m;
+            data.floor(i).agents(cur_agent).m = getAgentMass();
             data.floor(i).agents(cur_agent).v0 = data.v0;
             data.floor(i).agents(cur_agent).exit = 0;
             e = 2*pi*rand();
