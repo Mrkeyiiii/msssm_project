@@ -59,6 +59,13 @@ for fi = 1:data.floor_count
         data.floor(fi).agents(ai).v = v;
         data.floor(fi).agents(ai).p = newp;
         
+        % update agent's direction
+        if norm(v) ~= 0
+            data.floor(fi).agents(ai).e = v / norm(v);
+        else
+            data.floor(fi).agents(ai).e = [0 0];
+        end
+        
         % reset forces for next timestep
         data.floor(fi).agents(ai).f = [0 0];
         
@@ -68,9 +75,11 @@ for fi = 1:data.floor_count
         end
         
         % check if agent reached an exit
-        if data.floor(fi).img_exit(round(newp(1)), round(newp(2)))
-            exited(ai) = 1;
-            data.agents_exited = data.agents_exited +1;
+        for k = 1 : length(data.floor(fi).img_exit)
+            if data.floor(fi).img_exit{k}(round(newp(1)), round(newp(2)))
+                exited(ai) = 1;
+                data.agents_exited = data.agents_exited +1;
+            end
         end
     end
     

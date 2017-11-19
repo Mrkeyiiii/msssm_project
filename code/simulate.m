@@ -5,6 +5,7 @@ addpath('bin','c')
 
 if nargin==0
     config_file='data/config_test.conf';
+    config_file='data/config_test_2.conf';
 end
 
 fprintf('Load config file...\n');
@@ -19,9 +20,11 @@ fprintf('Start simulation...\n');
 
 while (data.time < data.duration)
     tstart=tic;
+    data = chooseExit(data);
     data = addDesiredForce(data);
     data = addWallForce(data);
     data = addAgentRepulsiveForce(data);
+    data = addExitForce(data);
     data = applyForcesAndMove(data);
     
     % do the plotting
