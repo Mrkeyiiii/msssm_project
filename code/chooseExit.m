@@ -39,6 +39,7 @@ for fi = 1:data.floor_count
         p = data.floor(fi).agents(ai).p;
         exit = data.floor(fi).agents(ai).exit;
         e = data.floor(fi).agents(ai).e;
+        isAlone = data.floor(fi).agents(ai).isAlone;
         
         % choose exit
         deUik = zeros(length(data.floor(fi).img_exit),1);
@@ -67,7 +68,12 @@ for fi = 1:data.floor_count
         [Ubest,kbest] = max(Uik);
         if exit == 0
             if max(Uik) == 0
-                data.floor(fi).agents(ai).e = [0 0];
+                if isAlone == 1
+                    e = 2*pi*rand();
+                    data.floor(fi).agents(ai).e = [cos(e) sin(e)];
+                else
+                    data.floor(fi).agents(ai).e = [0 0];
+                end
                 continue
             end
             exit = kbest;
