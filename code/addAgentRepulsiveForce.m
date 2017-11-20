@@ -23,20 +23,21 @@ for fi = 1:data.floor_count
     end
     
     for ai = 1:agents_on_floor
-        pi = data.floor(fi).agents(ai).p;
+        pi = data.floor(fi).agents(ai).p;  %position, velocity and radius of agent i
         vi = data.floor(fi).agents(ai).v;
         ri = data.floor(fi).agents(ai).r;
+        ei = data.floor(fi).agents(ai).e;  %direction at this moment (agent i)
         
         % use range tree to get the indices of all agents near agent ai
         idx = rangeQuery(tree, pi(1) - r_max, pi(1) + r_max, ...
-                                    pi(2) - r_max, pi(2) + r_max)';
+                                    pi(2) - r_max, pi(2) + r_max)';  %for loop, check every agent nearby
         
         % loop over agents near agent ai
         for aj = idx
             
             % if force has not been calculated yet...
             if aj > ai
-                pj = data.floor(fi).agents(aj).p;
+                pj = data.floor(fi).agents(aj).p; %position, velocity and radius of agent j
                 vj = data.floor(fi).agents(aj).v;
                 rj = data.floor(fi).agents(aj).r;
 
@@ -54,6 +55,17 @@ for fi = 1:data.floor_count
                 % sum of radii
                 rij = (ri + rj);
 
+                
+                % cos phi (20.nov)
+                cos_phi = dot(nij,ei);
+                
+                if cos_phi < 0
+                    cos_phi = 0;
+                end
+                
+                
+                
+                
                 % repulsive interaction forces
                 if d < rij
                    T1 = data.k*(rij - d);
@@ -63,7 +75,7 @@ for fi = 1:data.floor_count
                    T2 = 0;
                 end
 
-                F =  (data.A * exp((rij - d)/data.B) + T1)*nij + T2;
+                F =  (cos_phi*data.A * exp((rij - d)/data.B) + T1)*nij + T2;
 
                 data.floor(fi).agents(ai).f = ...
                     data.floor(fi).agents(ai).f + F;
