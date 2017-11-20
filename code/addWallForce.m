@@ -8,6 +8,7 @@ for fi = 1:data.floor_count
         p = data.floor(fi).agents(ai).p;
         ri = data.floor(fi).agents(ai).r;
         vi = data.floor(fi).agents(ai).v;
+        e = data.floor(fi).agents(ai).e;
         
         % get direction from nearest wall to agent
         nx = lerp2(data.floor(fi).img_wall_dist_grad_x, p(1), p(2));
@@ -29,8 +30,13 @@ for fi = 1:data.floor_count
             T1 = 0;
             T2 = 0;
         end
-        Fi = (data.A * exp((ri-diW)/data.B) + T1)*niW - T2;
         
+        cosPhi = -dot(e, niW);
+        if cosPhi > 0
+            Fi = (data.A * exp((ri-diW)/data.B) * cosPhi + T1)*niW - T2;
+        else
+            Fi =  T1 * niW - T2;
+        end
         % add force to agent's current force
         data.floor(fi).agents(ai).f = data.floor(fi).agents(ai).f + Fi;
     end
