@@ -15,6 +15,10 @@ data = config;
 %for convenience
 data.pixel_per_meter = 1/data.meter_per_pixel;
 
+if ~isfield(data, 'rho_congestion')
+    data.rho_congestion = 0.75;
+end
+
 fprintf('Init escape routes...\n');
 data = initEscapeRoutes(data);
 fprintf('Init wall forces...\n');

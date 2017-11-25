@@ -17,11 +17,18 @@ for fi = 1:data.floor_count
         dk = sort(dk);
         dk(dk==0) = [];
         if ~isempty(dk)
-            if dk(1) < 2
-                for i = 2 : length(dk)
-                    if dk(i)-dk(i-1) >= data.r_max+data.r_min/2
+            density = 1 / ((pi/2) * dk(1)*dk(1));
+            if density < data.rho_congestion
+                r(k) = 0;
+            else
+                for i = 2:length(dk)
+                    density = i / ((pi/2) * dk(i)*dk(i));
+                    if density < data.rho_congestion
                         r(k) = dk(i-1);
-                        break
+                        break;
+                    end
+                    if i == length(dk)
+                        r(k) = dk(i);
                     end
                 end
             end
