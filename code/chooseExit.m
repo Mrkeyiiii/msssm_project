@@ -49,11 +49,8 @@ for fi = 1:data.floor_count
         isAlone = data.floor(fi).agents(ai).isAlone;
         
         % choose exit
-        deUik = zeros(length(data.floor(fi).img_exit),1);
         diUik = zeros(length(data.floor(fi).img_exit),1);
-
         for k = 1 : length(data.floor(fi).img_exit)
-            deUik(k) = 0*exp(data.kw * data.W);
             nik = (data.floor(fi).img_exitC{k} - p) * data.meter_per_pixel;
             dik = norm(nik);
             nik = nik / dik;
@@ -71,7 +68,7 @@ for fi = 1:data.floor_count
             diUik(k) = exp(-data.l * dik * data.E) * ...
                        (1-data.alpha*data.E*(r(k)/rmax)^data.beta) * dphi;
         end
-        Uik = deUik * (1-data.E) + diUik * data.E;
+        Uik = diUik;
         [Ubest,kbest] = max(Uik);
         if exit == 0
             if max(Uik) == 0
