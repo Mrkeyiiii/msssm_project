@@ -1,5 +1,4 @@
-checkFolder = exist('bin','dir');
-if checkFolder ~= 7
+if exist('bin','dir') ~= 7
     mkdir('bin')
 end
 
