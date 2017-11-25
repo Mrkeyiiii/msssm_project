@@ -1,4 +1,7 @@
-mkdir('bin')
+checkFolder = exist('bin','dir');
+if checkFolder ~= 7
+    mkdir('bin')
+end
 
 mex -output 'bin/fastSweeping' 'c/fastSweeping.c'
 mex -output 'bin/getNormalizedGradient' 'c/getNormalizedGradient.c'
