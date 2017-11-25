@@ -27,6 +27,7 @@ for fi = 1:data.floor_count
                 end
             end
             v_avg = v_avg / (length(idx)-1);
+            data.floor(fi).agents(ai).isAlone = 0;
         else
             v_avg = v0*e;
             data.floor(fi).agents(ai).isAlone = 1;
