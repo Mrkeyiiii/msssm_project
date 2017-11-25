@@ -66,7 +66,7 @@ for fi = 1:data.floor_count
                 dphi = 0;
             end
             diUik(k) = exp(-data.l * dik * data.E) * ...
-                       (1-data.alpha*data.E*(r(k)/rmax)^data.beta) * dphi;
+                       (1-data.alpha*(r(k)/rmax)^data.beta) * dphi;
         end
         Uik = diUik;
         [Ubest,kbest] = max(Uik);
