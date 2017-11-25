@@ -5,7 +5,6 @@ addpath('bin','c')
 
 if nargin==0
     config_file='data/config_test.conf';
-    config_file='data/config_test_2.conf';
 end
 
 fprintf('Load config file...\n');
@@ -13,9 +12,7 @@ config = loadConfig(config_file);
 
 data = initialize(config);
 
-
 data.time = 0;
-frame = 0;
 fprintf('Start simulation...\n');
 
 while (data.time < data.duration)
@@ -30,24 +27,13 @@ while (data.time < data.duration)
     % do the plotting
     set(0,'CurrentFigure',data.figure_floors);
     for floor=1:data.floor_count
-%         plotAgentsPerFloor(data, floor);
         plotFloor(data, floor);
     end
-    if data.save_frames==1
-        print('-depsc2',sprintf('frames/%s_%04i.eps', ...
-            data.frame_basename,frame), data.figure_floors);
+    
+    % save frame
+    if data.save_frames == 1
+        saveFrame(data)
     end
-    
-%     set(0,'CurrentFigure',data.figure_exit);
-%     plotExitedAgents(data);
-    
-    
-    % print mean/median velocity of agents on each floor
-%     for fi = 1:data.floor_count
-%         avgv = arrayfun(@(agent) norm(agent.v), data.floor(fi).agents);
-%         fprintf('Mean/median velocity on floor %i: %g/%g m/s\n', fi, mean(avgv), median(avgv));
-%     end
-    
 
     if (data.time + data.dt > data.duration)
         data.dt = data.duration - data.time;
@@ -59,18 +45,13 @@ while (data.time < data.duration)
     if data.agents_exited == data.total_agent_count
         fprintf('All agents are now saved (or are they?). Time: %.2f sec\n', data.time);
         fprintf('Total Agents: %i\n', data.total_agent_count);
-        if data.save_frames==1
-            print('-depsc2',sprintf('frames/exited_agents_%s.eps', ...
-                data.frame_basename), data.figure_floors);
-        end
         break;
     end
     
-    
     telapsed = toc(tstart);
     pause(max(data.dt - telapsed, 0.01));
-    fprintf('Frame %i done (took %.3fs; %.3fs out of %.3gs simulated).\n', frame, telapsed, data.time, data.duration);
-    frame = frame + 1;
+    fprintf('Frame %i done (took %.3fs; %.3fs out of %.3gs simulated).\n', data.frame, telapsed, data.time, data.duration);
+    data.frame = data.frame + 1;
 end
 
 fprintf('Simulation done.\n');

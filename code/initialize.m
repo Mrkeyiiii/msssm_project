@@ -50,4 +50,22 @@ for i=1:config.floor_count
     , data.floor_count - i+1);
 end
 
+%frames
+data.frame = 0;
+if data.save_frames == 1
+    if exist('frames','dir') ~= 7
+        mkdir('frames')
+    end
+    if exist(['frames/' data.frame_basename],'dir') == 7
+        rmdir(['frames/' data.frame_basename],'s')
+    end
+    mkdir(['frames/' data.frame_basename])
+    data.video = VideoWriter(['frames/' data.frame_basename '/' data.frame_basename],'MPEG-4');
+    data.video.Quality = 100;
+    data.video.FrameRate = 25;
+    data.dt = min(0.04,data.dt);
+    data.FramesInSec = ceil(1 / (data.video.FrameRate * data.dt));
+    data.dt = 1 / (data.FramesInSec * data.video.FrameRate);
+    open(data.video);
+end
 
