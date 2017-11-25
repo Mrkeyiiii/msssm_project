@@ -3,6 +3,9 @@
 *.mex*
 *.asv
 
+# Frames and videos from simulations
+/code/frames
+
 # LaTeX compilation files
 *.aux
 *.log
