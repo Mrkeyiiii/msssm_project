@@ -39,7 +39,7 @@ By varying these parameters we would like to simulate the evacuation procedure a
 
 [1] Helbing, Farkas & Vicsek (2000): Simulating dynamical features of escape panic
 
-[2] Zainuddin & Shuaib (2011): Modification of the Decision-Making Capability in the Social Force Model for the Evacuation Process
+[2] Zainuddin & Shuaib (2010): Modification of the Decision-Making Capability in the Social Force Model for the Evacuation Process
 
 [3] Wang et al. (2016): Pedestrians’ behavior in emergency evacuation: Modeling and simulation
 
