@@ -20,6 +20,8 @@
 *.toc
 *.bbl
 *.blg
+*.bcf
+*.xml
 
 # LaTeX flashtalk pdf file
 /flashtalk/beamer/flashtalk.pdf
