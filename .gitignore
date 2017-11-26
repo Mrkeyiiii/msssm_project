@@ -6,6 +6,9 @@
 # Frames and videos from simulations
 /code/frames
 
+# Plots from simulations
+/code/plots
+
 # LaTeX compilation files
 *.aux
 *.log
