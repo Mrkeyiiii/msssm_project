@@ -28,13 +28,15 @@ if ~isempty(data.floor(floor_idx).agents)
     line(draw(:,2), draw(:,1), 'Color', 'r');
 end
 
-r = data.floor(floor_idx).img_exitR * data.pixel_per_meter;
-for k = 1 : length(data.floor(floor_idx).img_exit)
-    exitC = data.floor(floor_idx).img_exitC{k};
-    th = linspace(0,2*pi, 10)';
-    xunit = r(k) * cos(th) + exitC(2);
-    yunit = r(k) * sin(th) + exitC(1);
-    line(xunit, yunit,'Color','b');
+if data.save_frames ~= 1
+    r = data.floor(floor_idx).img_exitR * data.pixel_per_meter;
+    for k = 1 : length(data.floor(floor_idx).img_exit)
+        exitC = data.floor(floor_idx).img_exitC{k};
+        th = linspace(0,2*pi, 10)';
+        xunit = r(k) * cos(th) + exitC(2);
+        yunit = r(k) * sin(th) + exitC(1);
+        line(xunit, yunit,'Color','b');
+    end
 end
 
 % old drawing code...
