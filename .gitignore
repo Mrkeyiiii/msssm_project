@@ -1,7 +1,8 @@
-# MATLAB temporary and mex files
+# MATLAB temporary, mex and mat files
 *.m~
 *.mex*
 *.asv
+*.mat
 
 # Frames and videos from simulations
 /code/frames
