@@ -30,3 +30,11 @@ for p = pValues
     configName = ['data/config_demo_P-0.' num2str(p) '.conf'];
     delete(configName)
 end
+
+figure()
+plot(pValues/10,mean(tResults),'-ko')
+grid
+xlim([pValues(1)/10 pValues(end)/10])
+xlabel('Panic level $p$','interpreter','latex')
+ylabel('Evacuation time (s)','interpreter','latex')
+saveas(gcf,'../plots/demo_P.eps')
