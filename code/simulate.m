@@ -1,4 +1,4 @@
-function simulate(config_file)
+function final_time = simulate(config_file)
 % run this to start the simulation
 close all
 addpath('bin','c')
@@ -53,6 +53,8 @@ while (data.time < data.duration)
     fprintf('Frame %i done (took %.3fs; %.3fs out of %.3gs simulated).\n', data.frame, telapsed, data.time, data.duration);
     data.frame = data.frame + 1;
 end
+
+final_time = data.time;
 
 fprintf('Simulation done.\n');
 
