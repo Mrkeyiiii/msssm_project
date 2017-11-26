@@ -18,6 +18,11 @@
 *.snm
 *.synctex.gz
 *.toc
+*.bbl
+*.blg
 
 # LaTeX flashtalk pdf file
 /flashtalk/beamer/flashtalk.pdf
+
+# LaTeX report pdf file
+/doc/latex/report.pdf
