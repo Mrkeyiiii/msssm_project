@@ -1,0 +1,50 @@
+\documentclass[11pt]{article}
+
+\usepackage{geometry}                
+	\geometry{letterpaper}    	
+\usepackage{graphicx}
+	\graphicspath{ {images/}{plots/} }        
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsopn}	
+\usepackage{mathtools}
+\usepackage[numbib,nottoc]{tocbibind}
+\usepackage{hyperref}
+	\hypersetup{
+		colorlinks,
+		citecolor=black,
+		filecolor=black,
+		linkcolor=black,
+		urlcolor=black
+	}
+\bibliographystyle{unsrt}
+
+
+\begin{document}
+
+\input{contents/cover.tex}
+
+\input{contents/agreement.tex}
+
+\input{contents/declaration.tex}
+
+\tableofcontents
+\clearpage
+
+\input{contents/section1-Abstract.tex}
+
+\input{contents/section2-Contributions.tex}
+
+\input{contents/section3-Introduction.tex}
+
+\input{contents/section4-Model.tex}
+
+\input{contents/section5-Implementation.tex}
+
+\input{contents/section6-Simulation.tex}
+
+\input{contents/section7-Summary.tex}
+
+\input{contents/section8-References.tex}
+
+\end{document}
