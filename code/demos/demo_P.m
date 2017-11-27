@@ -1,6 +1,10 @@
 close all ; clear ; clc
 cd('..')
 
+s = rng('shuffle','twister');
+rng(s)
+simulate('data/config_demo_P.conf');
+
 trialNum = 10;
 pValues = 0 : 1 : 9;
 tResults = zeros(trialNum,length(pValues));
@@ -9,7 +13,8 @@ configText = fileread(configFile);
 
 for p = pValues
     configName = ['data/config_demo_P-0.' num2str(p) '.conf'];
-    configTextNew = strrep(configText,'X',num2str(p));
+    configTextNew = strrep(configText,'save_frames = 1','save_frames = 0');
+    configTextNew = strrep(configTextNew,'p = 0.4',['p = 0.' num2str(p)]);
     fileID = fopen(configName,'w');
     fprintf(fileID,configTextNew);
     fclose(fileID);
