@@ -54,7 +54,7 @@ for fi = 1:data.floor_count
             nik = (data.floor(fi).img_exitC{k} - p) * data.meter_per_pixel;
             dik = norm(nik);
             nik = nik / dik;
-            phi = acos(dot(nik,e));
+            phi = acos(nik*e');
             if dik > r(k)
                 dik = dik - r(k);
             else

@@ -25,13 +25,13 @@ for fi = 1:data.floor_count
         % calculate force
         if diW < ri
             T1 = data.k * (ri - diW);
-            T2 = data.kappa * (ri - diW) * dot(vi, tiW) * tiW;
+            T2 = data.kappa * (ri - diW) * (vi * tiW') * tiW;
         else
             T1 = 0;
             T2 = 0;
         end
         
-        cosPhi = -dot(e, niW);
+        cosPhi = - (e * niW');
         if cosPhi > 0
             Fi = (data.A * exp((ri-diW)/data.B) * cosPhi + T1)*niW - T2;
         else

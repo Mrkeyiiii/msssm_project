@@ -16,7 +16,7 @@ for fi = 1:data.floor_count
             nik = data.floor(fi).img_exitC{k} - p;
             dik = norm(nik);
             nik = nik / dik;
-            phi = dot(nik,e);
+            phi = nik * e';
             if phi < 0
                 phi = 0;
             end

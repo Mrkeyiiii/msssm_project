@@ -57,7 +57,7 @@ for fi = 1:data.floor_count
 
                 
                 % cos phi (20.nov)
-                cos_phi = dot(nij,ei);
+                cos_phi = nij * ei';
                 
                 if cos_phi < 0
                     cos_phi = 0;
@@ -69,7 +69,7 @@ for fi = 1:data.floor_count
                 % repulsive interaction forces
                 if d < rij
                    T1 = data.k*(rij - d);
-                   T2 = data.kappa*(rij - d)*dot((vj - vi),tij)*tij;
+                   T2 = data.kappa*(rij - d)*((vj - vi)*tij')*tij;
                 else
                    T1 = 0;
                    T2 = 0;
@@ -117,7 +117,7 @@ for fi = 1:data.floor_count
                             % repulsive interaction forces
                             if d < rij
                                T1 = data.k*(rij - d);
-                               T2 = data.kappa*(rij - d)*dot((vj - vi),tij)*tij;
+                               T2 = data.kappa*(rij - d)*((vj - vi)*tij')*tij;
                             else
                                T1 = 0;
                                T2 = 0;

@@ -43,7 +43,7 @@ for fi = 1:data.floor_count
             n = [nx ny];
             
             % project out perpendicular component of velocity vector
-            v = v - dot(n,v)/dot(n,n)*n;
+            v = v - (n*v')/(n*n')*n;
             
             % get agent's new position
             newp = data.floor(fi).agents(ai).p + ...
