@@ -93,8 +93,12 @@ for fi = 1:data.floor_count
         exitC = data.floor(fi).img_exitC{exit};
         
         % get direction towards exit
-        e = (exitC - p) * data.meter_per_pixel;
-        e = e / norm(e);
+        ex = lerp2(data.floor(fi).img_dir_x{exit}, p(1), p(2));
+        ey = lerp2(data.floor(fi).img_dir_y{exit}, p(1), p(2));
+        e = [ex ey];
+
+        %e = (exitC - p) * data.meter_per_pixel;
+        %e = e / norm(e);
         
         % update direction
         data.floor(fi).agents(ai).e = e;
