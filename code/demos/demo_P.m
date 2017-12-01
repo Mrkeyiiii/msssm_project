@@ -37,9 +37,9 @@ for p = pValues
 end
 
 figure()
-plot(pValues/10,mean(tResults),'-ko')
+plot(pValues/trialNum,mean(tResults),'-ko')
 grid
-xlim([pValues(1)/10 pValues(end)/10])
+xlim([pValues(1)/trialNum pValues(end)/trialNum])
 xlabel('Panic level $p$','interpreter','latex')
 ylabel('Evacuation time (s)','interpreter','latex')
 saveas(gcf,'../plots/demo_P.eps')
