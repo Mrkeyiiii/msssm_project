@@ -17,7 +17,7 @@ The interaction force $\bm{f}_{ij}$ between agents $i$ and $j$ is modelled as a 
 \begin{subequations}
 \begin{align} 
 	\bm{f}_{ij}(t) & = \bm{f}_{ij}^{\mathrm{psych}}(t) + \bm{f}_{ij}^{\mathrm{push}}(t) + \bm{f}_{ij}^{\mathrm{frict}}(t) \,, \label{eq:fij} \\
-	\bm{f}_{ij}^{\mathrm{psych}}(t) & = A_i \exp\left(\frac{r_{ij}-d_{ij}(t)}{B_i}\right) \bm{n}_{ij}(t) \cos^*(\varphi_{ij}(t)) \,, \label{eq:fij_psych} \\
+	\bm{f}_{ij}^{\mathrm{psych}}(t) & = A_i \exp\left(\frac{r_{ij}-d_{ij}(t)}{B_i}\right) \cos^*(\varphi_{ij}(t)) \bm{n}_{ij}(t) \,, \label{eq:fij_psych} \\
 	\bm{f}_{ij}^{\mathrm{push}}(t) & = k h(r_{ij}-d_{ij}(t)) \bm{n}_{ij}(t) \,, \label{eq:fij_pusj} \\
 	\bm{f}_{ij}^{\mathrm{frict}}(t) & = \kappa h(r_{ij}-d_{ij}(t)) \Delta v_{ji}^t(t) \bm{t}_{ij}(t) \,, \label{eq:fij_frict}
 \end{align}
@@ -28,7 +28,7 @@ The interaction force $\bm{f}_{iw}$ between agent $i$ and wall $w$ is modelled i
 \begin{subequations}
 \begin{align}
 	\bm{f}_{iw}(t) & = \bm{f}_{iw}^{\mathrm{psych}}(t) + \bm{f}_{iw}^{\mathrm{push}}(t) + \bm{f}_{iw}^{\mathrm{frict}}(t) \,, \label{eq:fiw} \\
-	\bm{f}_{iw}^{\mathrm{psych}}(t) & = A_i \exp\left(\frac{r_{i}-d_{iw}(t)}{B_i}\right) \bm{n}_{iw}(t) \cos^*(\varphi_{iw}(t)) \,, \label{eq:fiw_psych} \\
+	\bm{f}_{iw}^{\mathrm{psych}}(t) & = A_i \exp\left(\frac{r_{i}-d_{iw}(t)}{B_i}\right) \cos^*(\varphi_{iw}(t)) \bm{n}_{iw}(t) \,, \label{eq:fiw_psych} \\
 	\bm{f}_{iw}^{\mathrm{push}}(t) & = k h(r_{i}-d_{iw}(t)) \bm{n}_{iw}(t) \,, \label{eq:fiw_push} \\ 
 	\bm{f}_{iw}^{\mathrm{frict}}(t) & = \kappa h(r_{i}-d_{iw}(t)) \Delta v_{wi}^t(t) \bm{t}_{iw}(t) \,, \label{eq:fiw_frict}
 \end{align}
@@ -37,7 +37,7 @@ where all quantities are analogous to the quantities of \eqref{eq:fij}--\eqref{e
 
 The interaction force $\bm{f}_{ik}$ between agent $i$ and exit $k$ is modelled in the exact same way as the psychological force $\bm{f}_{ij}^{\mathrm{psych}}$. In continuous-time, the force is given by
 \begin{equation} \label{eq:fik}
-	\bm{f}_{ik}(t) = C_i \exp\left(\frac{r_{i}-d_{ik}(t)}{D_i}\right) \bm{n}_{ik}(t) \cos^*(\varphi_{ik}(t)) \,,
+	\bm{f}_{ik}(t) = C_i \exp\left(\frac{r_{i}-d_{ik}(t)}{D_i}\right) \cos^*(\varphi_{ik}(t)) \bm{n}_{ik}(t) \,,
 \end{equation}
 where $C_i$ and $D_i$ are constants and all other quantities are analogous to the quantities of \eqref{eq:fij}--\eqref{eq:fij_frict}.
 
