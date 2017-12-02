@@ -1,5 +1,5 @@
 \section{Description of the Model}
-The model that we used to capture the crowd dynamics is the \emph{social force model}, which is an agent-based continuous-time model. Initially proposed in \cite{Helbing2000}, and then later augmented in \cite{Zainuddin2010} and \cite{Wang2016}. Our model was inspired by all of the above references, borrowing ideas from all of them and with the appropriate alterations wherever needed.
+The model that we used to capture the crowd dynamics is the \emph{social force model}, which is an agent-based continuous-time model. It was initially proposed in \cite{Helbing2000}, and then later augmented in \cite{Zainuddin2010} and reformulated in \cite{Wang2016}. Our model was inspired by all of the above references, borrowing ideas from all of them and with the appropriate alterations wherever needed. 
 
 The social force model assumes a mixture of socio-psychological and physical forces influencing the behaviour in a crowd. Each of the $N$ agents (indexed with $i$) has a mass of $m_i$, wants to move in a certain way $\bm{v}_i^0(t)$ and therefore tends to correspondingly adapt his actual velocity $\bm{v}_i$ with a certain characteristic time $\tau_i$. Simultaneously, he tries to keep a velocity-dependent distance from other pedestrians (indexed with $j$) and walls (indexed with $w$), while being attracted from the escape exits (indexed with $k$). This is modelled by interaction forces $\bm{f}_{ij}$, $\bm{f}_{iw}$ and $\bm{f}_{ik}$, respectively. In continuous-time, the change of velocity in time $t$ is given by the acceleration equation
 \begin{equation} \label{eq:acceleration}
@@ -22,7 +22,7 @@ The interaction force $\bm{f}_{ij}$ between agents $i$ and $j$ is modelled as a 
 	\bm{f}_{ij}^{\mathrm{frict}}(t) & = \kappa h(r_{ij}-d_{ij}(t)) \Delta v_{ji}^t(t) \bm{t}_{ij}(t) \,, \label{eq:fij_frict}
 \end{align}
 \end{subequations}
-where $A_i$, $B_i$, $k$ and $\kappa$ are constants, $r_{ij}=r_i+r_j$ denotes the sum of the agents' radii, $d_{ij}(t)=\lVert \bm{r}_i(t)-\bm{r}_j(t) \rVert$ denotes the distance between their centres of mass, $\bm{n}_{ij}(t)=(n_{ij}^1(t),n_{ij}^2(t))=(\bm{r}_i(t)-\bm{r}_j(t))/d_{ij}(t)$ is the normalized vector pointing from agent $j$ to $i$, $\bm{t}_{ij}(t)=(-n_{ij}^2(t),n_{ij}^1(t))$ is the tangential direction, $\Delta v_{ji}^t(t)=(\bm{v}_j(t)-\bm{v}_i(t))\cdot\bm{t}_{ij}(t)$ is the tangential velocity difference, $\varphi{ij}(t)$ is the angle between agent $i$'s moving direction and $\bm{e_i^0}(t)$ and $\bm{n}_{ij}(t)$, $h(\cdot)$ is a function that is equal to zero if its argument is negative and is equal to its argument otherwise and $\cos^*(\varphi_{ij}(t))$ is equal to zero if $|\varphi_{ij}(t)| > \ang{90}$ and is equal to $\cos(\varphi_{ij}(t))$ otherwise. 
+where $A_i$, $B_i$, $k$ and $\kappa$ are constants, $r_{ij}=r_i+r_j$ denotes the sum of the agents' radii, $d_{ij}(t)=\lVert \bm{r}_i(t)-\bm{r}_j(t) \rVert$ denotes the distance between their centres of mass, $\bm{n}_{ij}(t)=(n_{ij}^1(t),n_{ij}^2(t))=(\bm{r}_i(t)-\bm{r}_j(t))/d_{ij}(t)$ is the normalized vector pointing from agent $j$ to $i$, $\bm{t}_{ij}(t)=(-n_{ij}^2(t),n_{ij}^1(t))$ is the tangential direction, $\Delta v_{ji}^t(t)=(\bm{v}_j(t)-\bm{v}_i(t))\cdot\bm{t}_{ij}(t)$ is the tangential velocity difference, $\varphi{ij}(t)$ is the angle between agent $i$'s moving direction and $\bm{e_i^0}(t)$ and $\bm{n}_{ij}(t)$, $h(\cdot)$ is a function that is equal to zero if its argument is negative and is equal to its argument otherwise, $\cos^*(\varphi_{ij}(t))$ is equal to zero if $|\varphi_{ij}(t)| > \ang{90}$ and is equal to $\cos(\varphi_{ij}(t))$ otherwise. 
 
 The interaction force $\bm{f}_{iw}$ between agent $i$ and wall $w$ is modelled in the exact same way as the force $\bm{f}_{ij}$. In continuous-time, the force is given by
 \begin{subequations}
@@ -41,12 +41,14 @@ The interaction force $\bm{f}_{ik}$ between agent $i$ and exit $k$ is modelled i
 \end{equation}
 where $C_i$ and $D_i$ are constants and all other quantities are analogous to the quantities of \eqref{eq:fij}--\eqref{eq:fij_frict}.
 
-The direction $\bm{e}_i^0$ of each agent depends on his decision of the exits he wants to move towards, denoting as $k_i^*$ the index $k$ of the exit that agent $i$ has chosen. This decision depends on the values of a utility function $U_{ik}$ for each exit. If the utility of another exit is sufficiently large, the agent will change his mind and move towards the exit with the larger utility. In continuous-time, this is given by
+The direction $\bm{e}_i^0$ of each agent depends on his decision of the exits he wants to move towards, denoting as $k_i^*$ the index $k$ of the exit that agent $i$ has chosen. This decision depends on the values of a utility function $U_{ik}$ for each exit. If the utility of another exit is sufficiently large, the agent will change his mind and move towards the exit with the larger utility. In continuous-time, these are given by
 \begin{subequations}
 \begin{align}
 	\bm{e}_i^0(t) & = \frac{\bm{r}_{k_i^*(t)} - \bm{r}_i}{\lVert \bm{r}_{k_i^*(t)} - \bm{r}_i \rVert}  \,, \label{eq:ei} \\
 	k_i^*(t) & = \mathrm{indmax}\{ (1+g_i) U_{ik_i^*(t)} \,, \max_k\left(U_{ik}(t)\right) \} \,, \label{eq:ki} \\
-	U_{ik}(t) & = \exp\left( -l_i d_{ik}^{\mathrm{unc}} E_i \right) \left(1-\alpha_i\left(\frac{r_k(t)}{\max_k\left(r_k(t)\right)}\right)^{\beta_i}\right) \delta(\varphi_{ik}(t)) \,, \label{eq:Uik} \\
+	U_{ik}(t) & = \exp\left( -l_i d_{ik}^{\mathrm{unc}} E_i \right) \left(1-\alpha_i\left(\frac{r_k(t)}{\max_k\left(r_k(t)\right)}\right)^{\beta_i}\right) \delta(\varphi_{ik}(t)) \,, \label{eq:Uik}
 \end{align}
 \end{subequations}
-where $g_i$, $l_i$, $\alpha_i$ and $\beta_i$ are constants, $E_i$ is the excitement factor of each agent, $d_{ik}^{\mathrm{unc}}$ is the uncongested distance between agent $i$ and exit $k$, $r_k(t)$ is the congested radius around exit $k$ and $\delta(\varphi_{ik}(t))$ is equal to $1$ if $|\varphi_{ij}(t)| \leq \pi/2 + \pi/2(1-E_i)$ and is equal to $0$ otherwise.
+where $g_i$, $l_i$, $\alpha_i$ and $\beta_i$ are constants, $E_i$ is the excitement factor of each agent, $d_{ik}^{\mathrm{unc}}$ is the uncongested distance between agent $i$ and exit $k$, $r_k(t)$ is the congested radius around exit $k$, $\delta(\varphi_{ik}(t))$ is equal to $1$ if $|\varphi_{ij}(t)| \leq \pi/2 + (1-E_i)\pi/2$ and is equal to $0$ otherwise.
+
+In case some part of the model was not explained in sufficient detail, the reader is referred to \cite{Helbing2000}, \cite{Zainuddin2010} and \cite{Wang2016} for a more detailed description of the model and its parameters.
