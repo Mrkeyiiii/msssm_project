@@ -7,11 +7,11 @@ The social force model assumes a mixture of socio-psychological and physical for
 \end{equation}
 while the change of position $\bm{r}_i(t)$ is given by the velocity through $\bm{v}_i(t) = (\d\bm{r}_i / \d t) (t)$.
 
-The desired way $\bm{v}_i^0$ each agent wants to move is modelled as a weighted sum of his individual desired speed $\nu_i^0$ and direction $\bm{e}_i^0$ and the average speed $\bar{\bm{v}}_i^0$ of agents around him (in a \SI{2}{\meter} radius). In continuous-time, the speed is given by
+The desired way $\bm{v}_i^0$ each agent wants to move is modelled as a weighted sum of his individual desired velocity $\nu_i^0$ and direction $\bm{e}_i^0$ and the average velocity $\bar{\bm{v}}_i^0$ of agents around him in a radius of $r_i^p$. In continuous-time, the velocity is given by
 \begin{equation} \label{eq:vi}
-	\bm{v}_i^0(t) = (1-p) \nu_i^0 \bm{e}_i^0(t) + p \bar{\bm{v}}_i^0(t) \,,
+	\bm{v}_i^0(t) = (1-p_i) \nu_i^0 \bm{e}_i^0(t) + p_i \bar{\bm{v}}_i^0(t) \,,
 \end{equation}
-where $p$ is a parameter that represents the agents' panic level.
+where $p_i$ is a parameter that represents each agent's panic level.
 
 The interaction force $\bm{f}_{ij}$ between agents $i$ and $j$ is modelled as a sum of a psychological force $\bm{f}_{ij}^{\mathrm{psych}}$, a push force $\bm{f}_{ij}^{\mathrm{push}}$ and a friction force $\bm{f}_{ij}^{\mathrm{frict}}$. In continuous-time, the force is given by
 \begin{subequations}
