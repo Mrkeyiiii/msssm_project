@@ -42,4 +42,7 @@ grid
 xlim([pValues(1)/trialNum pValues(end)/trialNum])
 xlabel('Panic level $p$','interpreter','latex')
 ylabel('Evacuation time (s)','interpreter','latex')
-saveas(gcf,'../plots/demo_P.eps')
+if exist('plots','dir') ~= 7
+    mkdir('plots')
+end
+saveas(gcf,'plots/demo_P.eps')
