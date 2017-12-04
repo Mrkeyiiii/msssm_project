@@ -55,7 +55,7 @@ for fi = 1:data.floor_count
             d_x = lerp2(data.floor(fi).img_dir_x{k}, p(1), p(2));
             d_y = lerp2(data.floor(fi).img_dir_y{k}, p(1), p(2));
             nik = [d_x d_y];
-            phi = acos(nik,e');
+            phi = acos(nik*e');
             if dik > r(k)
                 dik = dik - r(k);
             else
