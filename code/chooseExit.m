@@ -51,6 +51,11 @@ for fi = 1:data.floor_count
         % choose exit
         diUik = zeros(length(data.floor(fi).img_exit),1);
         for k = 1 : length(data.floor(fi).img_exit)
+            % nik = (data.floor(fi).img_exitC{k} - p) * data.meter_per_pixel;
+            % dik = norm(nik);
+            % nik = nik / dik;
+            % phi = acos(nik*e');
+
             dik = lerp2(data.floor(fi).exit_dist{k}, p(1), p(2));
             d_x = lerp2(data.floor(fi).img_dir_x{k}, p(1), p(2));
             d_y = lerp2(data.floor(fi).img_dir_y{k}, p(1), p(2));
