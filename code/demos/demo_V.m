@@ -8,11 +8,12 @@ configFile = 'data/config_demo_v0.conf';
 configText = fileread(configFile);
 
 for v0 = v0Values
-configName = ['data/config_demo_v0-' num2str(v0/100) '.conf'];
+configName = ['data/config_demo_v0-' num2str(v0/100) '.conf']; %check the config before starting!
+
 configTextNew = strrep(configText,'X',num2str(v0/100)); %search for X and replace it
-fileID = fopen(configName,'w');                     %write premission
+fileID = fopen(configName,'w');                         %write premission
 fprintf(fileID,configTextNew);
-fclose(fileID);                                     %overwriting the config.file
+fclose(fileID);                                         %overwriting the config.file
 end
 
 for trial = 1 : trialNum
@@ -34,12 +35,13 @@ delete(configName)
 end
 
 figure()
-plot(v0Values/10,mean(tResults),'-ko')
+plot(v0Values/100,mean(tResults),'-ko')
 grid
 xlim([v0Values(1)/10 v0Values(end)/10])
 xlabel('Desired velocity $v0$','interpreter','latex')
 ylabel('Evacuation time (s)','interpreter','latex')
-if exist('plots','dir') ~= 7
+
+if exist('plots','dir') ~= 7    
 mkdir('plots')
 end
 saveas(gcf,'../plots/demo_v0.eps')
