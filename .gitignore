@@ -22,6 +22,7 @@
 *.blg
 *.bcf
 *.xml
+/doc/latex/plots/*.pdf
 
 # LaTeX flashtalk pdf file
 /flashtalk/beamer/flashtalk.pdf
