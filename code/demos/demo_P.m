@@ -42,6 +42,7 @@ grid
 xlim([pValues(1)/trialNum pValues(end)/trialNum])
 xlabel('Panic level $p$','interpreter','latex')
 ylabel('Evacuation time (s)','interpreter','latex')
+set(gca,'TickLabelInterpreter','latex')
 if exist('plots','dir') ~= 7
     mkdir('plots')
 end
