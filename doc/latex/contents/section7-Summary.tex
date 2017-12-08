@@ -1,1 +1,11 @@
 \section{Summary and Outlook}
+
+\subsection{Outlook}
+It is easy to see that our model in the current version only makes sense for
+open, convex rooms. In reality, buildings are of course more complex than that.
+
+We experimented with extending the model to non-convex rooms. Pathfinding is implemented by setting $\bm{e}_i^0(t) = -\nabla d_{k_i^*}(\bm{r}_i)$ where $d_k(\bm{r})$ is the distance field from exit $k$. In addition, now $d_{ik} = d_k(\bm{r}_i)$, i.e.\ calculations requiring distance now respect the geometry of the building.
+
+However, other aspects of the model are harder to modify. For instance, the current utility function $U_{ik}(t)$ does not take visibility of the exit into account. This could be remedied partially by adding a simple occlusion test, but that would not be satisfactory. For instance, no exits might be directly visible, but agents could have seen emergency exits when entering the building or earlier in the simulation.
+
+This would require changing the model significantly, which is why we didn't pursue the idea further.
