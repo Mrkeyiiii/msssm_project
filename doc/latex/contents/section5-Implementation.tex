@@ -2,3 +2,21 @@
 The implementation of the model presented in Section \ref{sec:4-model} was based on the code from~\citet{Hardmeier2012}. Since the code of~\citet{Hardmeier2012} implements the social force model exactly as it is presented in~\citet{Helbing2000}, it was appropriate to take the code of~\citet{Hardmeier2012} as a starting point and make the necessary additions and alterations according to the model modifications of~\citet{Zainuddin2010} and~\citet{Wang2016}. Most of these additions and alterations warrant no particular explanation, and in general were made according to the model of Section \ref{sec:4-model}.
 
 The point that will be discussed in detail is the calculation of the congested radii $r_k(t)$ around each exit, from \eqref{eq:Uik}. This point was not discussed at all in~\citet{Zainuddin2010} or~\citet{Wang2016} and therefore a new implementation was needed.
+
+Our congestion radius $r_k$ is defined as the radius of the largest semi-circle around the exit such that the density of people inside is larger than some user defined congestion density $\rho_{\textrm{congestion}}$. This can be calculated efficiently using the following algorithm.
+
+\begin{algorithm}
+	\caption{Computing the congestion radius for exit $k$}
+	\begin{algorithmic}
+		\State $\delta_i \gets sorted((d_{ik})_{i=1}^{N})$   \Comment{$d_{ik}$: distance of actor $\#i$ to the center of exit $\#k$}
+		\State $r_k \gets 0$
+		\For{$i \gets 1,\dots,N$}
+			\If{$2 \dot i / \delta_i^2 \geq \rho_{\textrm{congestion}}$}
+				\State $r_k \gets \delta_i$
+			\Else
+				\State \Return{$r_k$}
+			\EndIf
+		\EndFor{}
+		\State \Return{$r_N$}
+	\end{algorithmic}
+\end{algorithm}
