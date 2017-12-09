@@ -1,11 +1,16 @@
-\section{Summary and Outlook}
+\section{Summary and Outlook} \label{sec:7-summary}
+\subsection{Summary}
+In summary, during this project we studied the problem of modelling and simulating and evacuation procedure scenario through the social force model. We studied relevant literature and then stated our specific research questions regarding the key parameters that we considered most important. We defined formally the model that we used and then implemented it. We conducted several experiments to test the behaviour of said model and to answer the research questions that we had stated.
 
-%\subsection{Outlook}
-%It is easy to see that our model in the current version only makes sense for
-%open, convex rooms. In reality, buildings are of course more complex than that.
-%
-%We experimented with extending the model to non-convex rooms. Pathfinding is implemented by setting $\bm{e}_i^0(t) = -\nabla d_{k_i^*}(\bm{r}_i)$ where $d_k(\bm{r})$ is the distance field from exit $k$. In addition, now $d_{ik} = d_k(\bm{r}_i)$, i.e.\ calculations requiring distance now respect the geometry of the building.
-%
-%However, other aspects of the model are harder to modify. For instance, the current utility function $U_{ik}(t)$ does not take visibility of the exit into account. This could be remedied partially by adding a simple occlusion test, but that would not be satisfactory. For instance, no exits might be directly visible, but agents could have seen emergency exits when entering the building or earlier in the simulation.
-%
-%This would require changing the model significantly, which is why we didn't pursue the idea further.
+The answers to our four research questions are summarized below:
+\begin{enumerate}
+	\item 
+	
+	\item A lower \emph{panic level} caused the agents to behave in a more individualistic way, whereas a higher \emph{panic level} caused the agents to behave in a more herd-like way.
+	
+	\item There was a positive correlation between the \emph{panic level} and the evacuation time.
+	
+	\item A lower \emph{excitement factor} caused the agents to make well-informed decisions, whereas a higher \emph{excitement factor} caused the agents to make hastier and ill-informed decisions.
+\end{enumerate}
+
+\subsection{Further Work}

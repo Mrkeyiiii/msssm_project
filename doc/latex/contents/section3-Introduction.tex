@@ -1,25 +1,27 @@
-\section{Introduction and Motivations}
+\section{Introduction and Motivations} \label{sec:3-introduction}
 \subsection{Introduction}
-Evacuation of a building as a topic that has been studied many times,
-e.g.\ by~\citet{Helbing2000}.
-Most models don't include more than one exit, or have the agents move to a
-fixed exit based on position (i.e.\ the closest exit). This might not be an
-accurate model, because the choice of exit depends on other factors as well (Is
-the exit well visible? Is the exit blocked by other people?).
+Metro-station during the rush hours, shopping mall on weekends, ETH Mensa at lunch time, etc, are familiar settings to everyone. With the development of society, similar situations that could be represented by scenarios like the above are becoming a common part of our daily life. Therefore, precise predictions of the movement of the crowd through computational modelling, especially in threatening situations like an evacuation, are of increasing importance. This motivated us to lean our work on the topic evacuation modelling.
 
-We extend and concrete a model that accounts for these influencing factors,
-namely the model proposed in~\citet{Wang2016}.
+Numerous researchers have already focused on the modelling of evacuation process with the well-accepted social force model. However, they all show their individual limitations and could be further improved regarding calculation time, calibration of the parameters, etc.
+
+Evacuation of a building as a topic that has been studied many times,
+e.g.\ in \cite{Helbing2000}. Most models don't include more than one exit, or have the agents move to a fixed exit based on position (i.e.\ the closest exit). This might not be an accurate model, because the choice of exit depends on other factors as well (Is the exit well visible? Is the exit blocked by other people?). We extend and concrete a model that accounts for these influencing factors, namely the model proposed in \cite{Zainuddin2010} and \cite{Wang2016}.
+
 
 \subsection{Motivation}
-In general, having more emergency exits should help with evacuation times due
-to reduced congestion. However, this is only the case if the choice of exit is
-distributed evenly between exits. If the people don't choose among the exits
-evenly enough, some exits might be overused and get congested.
+In general, having more emergency exits should help with evacuation times due to reduced congestion. However, this is only the case if the choice of exit is distributed evenly between exits. If the people don't choose among the exits evenly enough, some exits might be overused and get congested.
 
-To optimize the evacuation time of a building or similar structure, it is
-essential that exits are placed such that they are used similarly often, and
-for this a model that accounts for the choice of exit is essential.
+To optimize the evacuation time of a building or similar structure, it is essential that exits are placed such that they are used similarly often, and for this a model that accounts for the choice of exit is essential. Our work might help with designing floor plans for buildings, by allowing the architect to experiment with positions of emergency exits to determine the optimal placement.
 
-Our work might help with designing floor plans for buildings, by allowing the
-architect to experiment with positions of emergency exits to determine the
-optimal placement.
+
+\subsection{Research Questions}
+The three key parameters whose effect on the output of our model we are going to study are the \emph{desired velocity}, the \emph{panic level} and the \emph{excitement factor} of the agents. In order to understand how these parameters influence our model, we have formed specific research questions that we hope to answer. These are the following:
+\begin{enumerate}
+	\item How does the \emph{desired velocity} affect the evacuation time?
+	
+	\item How does the \emph{panic level} affect the behaviour of the agents during the evacuation?
+	
+	\item How does the \emph{panic level} affect the evacuation time?
+	
+	\item How does the \emph{excitement factor} affect the behaviour of the agents during the evacuation?
+\end{enumerate}
