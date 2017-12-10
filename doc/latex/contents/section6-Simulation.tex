@@ -21,14 +21,14 @@ All simulations were carried out using the forward Euler method to numerically s
 		\hline
 		Parameter & Value & \\ \hline
 		$N$ & 400 & \\
-		$B_i$ & $0.1$ &  \\
-		$D_i$ & $0.5$ &  \\
-		$l_i$ & $0.05$ &  \\
-		$\alpha_i$ & $0.3$ &  \\
-		$\beta_i$ & $1.5$ &  \\
-		$g_i$ & $0.2$ &  \\
-		$E_i$ & $0.6$ &  \\
-		$p_i$ & $0.3$ &  \\
+		$B_i$ & $0.1$ & \\
+		$D_i$ & $0.5$ & \\
+		$l_i$ & $0.05$ & \\
+		$\alpha_i$ & $0.3$ & \\
+		$\beta_i$ & $1.5$ & \\
+		$g_i$ & $0.2$ & \\
+		$E_i$ & $0.6$ & \\
+		$p_i$ & $0.3$ & \\
 	\end{tabular}
 	\hfill \,
 	\caption{Simulation parameters' values. A range of values instead of a singular value denotes that the values of that particular parameter were chosen randomly for each agent using a uniform distribution on that range. A singular value for a parameter that is agent-dependent denotes that all agents have the same parameter value.}
@@ -39,23 +39,22 @@ The values of said parameters stem both from empirical data and from expected va
 
 
 \subsection{Desired Velocity} \label{sec:6.1-velocity}
-Having the unit meter/second, the desired velocity $nu^0$  describes the final velocity each pedestrian want to achieve and hence influence the variation of his/her actual speed. Logically, every pedestrian will want to get out of the building as soon as possible, making the theoretical value of a desired velocity very large. However, we also have to take individual ages, sizes and abilities of different people into account, which all eventually set limitation to the maximal velocity and therefore also the desired velocity. Therefore, we set a relative low range of values for the $\nu_i^0$ for the sake of generality, which will be explained soon in the following chapter. 
+Having the unit $\si{\meter\,\second^{-1}}$, the desired velocity $\nu_i^0$ describes the final velocity each pedestrian want to achieve and hence influence the variation of his actual speed. Logically, every pedestrian will want to get out of the building as soon as possible, making the theoretical value of a desired velocity very large. However, we also have to take individual ages, sizes and abilities of different people into account, which all eventually set limitation to the maximal velocity and therefore also the desired velocity. Therefore, we set a relative low range of values for the $\nu_i^0$ for the sake of generality, which will be explained below. 
 
-To have a first impression about the model and the arena mentioned. We firstly present a simulation with $\nu_i^0 = 2.22$. To minimize the effect of the panic factor, that is, the herding or individualistic behaviours of the pedestrians, we chose to place the exits directly near to the spawning ground. After that we chose smaller exits, which not only compensate the reduced length of the path to exits, but also make the arc-building process more observable. 
-
+To have a first impression about the model and the arena mentioned. We firstly present a simulation with $\nu_i^0 = \SI{2.22}{\meter\,\second^{-1}}$. To minimize the effect of the panic factor, that is, the herding or individualistic behaviours of the pedestrians, we chose to place the exits directly near to the spawning ground. After that we chose smaller exits, which not only compensate the reduced length of the path to exits, but also make the arc-building process more observable. 
 
 \begin{figure}[ht!]
 	\begin{subfigure}{.48\textwidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{{demo_V-2.22_0500_5.000}.eps}
 		\caption{$t = \SI{5}{\second}$}
-		\label{fig:demo_V-0.4_a}
+		\label{fig:demo_V-2.2_a}
 	\end{subfigure}
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{{demo_V-2.22_1000_10.000}.eps}
 		\caption{$t = \SI{10}{\second}$}
-		\label{fig:demo_V-0.4_b}
+		\label{fig:demo_V-2.2_b}
 	\end{subfigure}
 
 	\vspace{\baselineskip}
@@ -88,27 +87,25 @@ To have a first impression about the model and the arena mentioned. We firstly p
 		\label{fig:demo_V-2.2_f}
 	\end{subfigure}
 
-	\caption{Simulation of the evacuation procedure of $N=800$ agents, through two $\SI{2.1}{\meter}$ wide exits, with a desired velocity of $nu^0 = 2.22$, at six different time instants. The whole evacuation procedure takes $\SI{42.32}{\second}$. (a): The agents choose an exit and start moving. In the other figures one could clearly observe the cognition and how it decreases with time}
+	\caption{Simulation of the evacuation procedure of $N=800$ agents, through two $\SI{2.1}{\meter}$ wide exits, with a desired velocity of $\nu_i^0 = 2.22$, at six different time instants. The whole evacuation procedure takes $\SI{42.32}{\second}$. (a): The agents choose an exit and start moving. In the other figures one could clearly observe the congestion and how it decreases with time}
 	\label{fig:demo_V-2.2}
 \end{figure}
 
 In order to determine how the desired velocity of the agents affect their behaviour and the evacuation time, multiple simulations were conducted with various panic levels $\nu_i^0$. The desired velocity that was used remain the same for all agents in each separate simulation, and therefore will be henceforth denoted as just $\nu^0$. The simulations were conducted in an arena with two exits of width $\SI{2.1}{\meter}$ located directly above the spawning area of the pedestrians, $N=600$ agents, and the parameter $\alpha_i=0.6$ for all agents was used. 
-
 
 In order to see the effect of different values of the desired velocity $\nu^0$ on the total evacuation time, multiple simulations were conducted with values of $\nu^0$in the range $[1.35,2.25]$. 
 For each value of $\nu^0$ in this range, $10$ different simulations were conducted and the mean evacuation of time was taken, in order to reduce the randomness induced by the random parameters and initializations of each simulation. The resulting evacuation times are presented in Figure \ref{fig:demo_V}.
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=.6\linewidth]{{demo_V}.eps}
+	\includegraphics[width=.8\linewidth]{{demo_V}.eps}
 	\caption{Relation between the desired velocity and the total evacuation time, increasing levels of panic leads to an decreasing evacuation time. The evacuation time was calculated as the mean of $10$ different simulations, for each $\nu^0$.}
 	\label{fig:demo_V}
 \end{figure}
 
-As mentioned before, the lower bound $1.35$ should represent an average walking velocity.  To stay conservative, we firstly set the upper bound to $2.25$, which is roughly the speed that an adult of ages between $30$ and $39$ could perform in a COOPER test(A test of physical fitness adapted form US military).\footnote{Evaluation des COOPER-Tests aus leistungsphysiologischer Perspektive}. Although it is very low by comparison to \cite{Helbing2000}, it represents a more general case including people of different ages and abilities.
+As mentioned before, the lower bound $1.35$ should represent an average walking velocity. To stay conservative, we firstly set the upper bound to $2.25$, which is roughly the speed that an adult of ages between $30$ and $39$ could perform in a COOPER test (a test of physical fitness adapted form US military, by \citet{Ulrich2006}). Although it is very low in comparison to \cite{Helbing2000}, it represents a more general case including people of different ages and abilities.
 
-On the first glance, this plot seems quiet self-explaining: With higher desired velocity, the total evacuation time decreases. The evacuation processes show similar behaviours until the desired velocity hits $1.73$, where the evacuation time drops from $42s$ to $36s$. Starting from there, the  slope of the plot remain flat for a short interval and slightly falls at the very end of the plot. This eventually indicate the 'fast is slow'- effect mentioned in \cite{Helbing2000}. Starting from certain desired velocity, a larger desired velocity will contribute less to further decrement of the evacuation time. One also has to notice the fact that the model treats people as "rigid bodies", ignoring the potential injuries caused by crashing and squeezing, which on the other hand are possible results of higher desired velocity. If we take a look at the Figure 1.c of \cite{Helbing2000}, we will notice the similarity of the two plots, despite the fact that we used a different layout of the floor and different set of parameters. 
-
+On the first glance, this plot seems quiet self-explaining; with higher desired velocity, the total evacuation time decreases. The evacuation processes show similar behaviours until the desired velocity hits $1.73$, where the evacuation time drops from $\SI{42}{\second}$ to $\SI{36}{\second}$. Starting from there, the slope of the plot remain flat for a short interval and slightly falls at the very end of the plot. This eventually indicates the "fast is slow" effect mentioned in \cite{Helbing2000}. Starting from certain desired velocity, a larger desired velocity will contribute less to further decrement of the evacuation time. One also has to notice the fact that the model treats people as "rigid bodies", ignoring the potential injuries caused by crashing and squeezing, which on the other hand are possible results of higher desired velocity. If we take a look at the Figure 1c of \cite{Helbing2000}, we will notice the similarity of the two plots, despite the fact that we used a different layout of the floor and different set of parameters. 
 
 
 \subsection{Panic Level} \label{sec:6.2-panic}
