@@ -29,3 +29,6 @@
 
 # LaTeX report pdf file
 /doc/latex/report.pdf
+
+# LaTeX presentation pdf file
+/presentation/beamer/presentation.pdf
