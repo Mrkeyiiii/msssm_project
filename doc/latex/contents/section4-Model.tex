@@ -44,9 +44,9 @@ where $C_i$ and $D_i$ are constants and all other quantities are analogous to th
 The direction $\bm{e}_i^0$ of each agent depends on his decision of the exits he wants to move towards, denoting as $k_i^*$ the index $k$ of the exit that agent $i$ has chosen. This decision depends on the values of a utility function $U_{ik}$ for each exit. If the utility of another exit is sufficiently large, the agent will change his mind and move towards the exit with the larger utility. In continuous-time, these are given by
 \begin{subequations}
 \begin{align}
-	\bm{e}_i^0(t) & = - \frac{\nabla d_{k_i^*}(\bm{r}_i)}{\lVert \nabla d_{k_i^*}(\bm{r}_i) \rVert}  \,, \label{eq:ei} \\
-	k_i^*(t) & = \mathrm{indmax}\{ (1+g_i) U_{ik_i^*(t)} \,, \max_k\left(U_{ik}(t)\right) \} \,, \label{eq:ki} \\
-	U_{ik}(t) & = \exp\left( -l_i d_{ik}^{\mathrm{unc}(t)} E_i \right) \left(1-\alpha_i\left(\frac{r_k(t)}{\max_k\left(r_k(t)\right)}\right)^{\beta_i}\right) \delta(\varphi_{ik}(t)) \,, \label{eq:Uik}
+	\bm{e}_i^0(t) & = - \nabla d_{k_i^*}(\bm{r}_i) \,, \label{eq:ei} \\
+	k_i^*(t) & = \mathrm{indmax}\{ (1+g_i) U_{ik_i^*}(t) \,, \max_k\left(U_{ik}(t)\right) \} \,, \label{eq:ki} \\
+	U_{ik}(t) & = \exp\left( -l_i d_{ik}^{\mathrm{unc}}(t) E_i \right) \left(1-\alpha_i\left(\frac{r_k(t)}{\max_k\left(r_k(t)\right)}\right)^{\beta_i}\right) \delta(\varphi_{ik}(t)) \,, \label{eq:Uik}
 \end{align}
 \end{subequations}
 where $g_i$, $l_i$, $\alpha_i$ and $\beta_i$ are constants, $E_i$ is the excitement factor of each agent, $d_k(\bm{r})$ is the distance field from exit $k$, $d_{ik}^{\mathrm{unc}}(t)$ is the uncongested distance between agent $i$ and exit $k$, $r_k(t)$ is the congested radius around exit $k$, $\delta(\varphi_{ik}(t))$ is equal to $1$ if $|\varphi_{ij}(t)| \leq \pi/2 + (1-E_i)\pi/2$ and is equal to $0$ otherwise.
