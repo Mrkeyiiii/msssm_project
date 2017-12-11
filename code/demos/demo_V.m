@@ -1,6 +1,10 @@
 close all ; clear ; clc
 cd('..')
 
+s = rng('shuffle','twister');
+rng(s)
+simulate('data/config_demo_V_2.22.conf');
+
 trialNum = 10;
 v0Values = 135 : 10 : 225;
 tResults = zeros(trialNum,length(v0Values));

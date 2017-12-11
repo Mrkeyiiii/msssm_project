@@ -23,16 +23,20 @@ By varying these parameters we would like to simulate the evacuation procedure a
 
 ## Fundamental Questions
 
-1. How does the panic level affect the behaviour of the agents during the evacuation?
-2. How does the panic level affect the evacuation time?
-3. How does the excitement factor affect the behaviour of the agents during the evacuation?
+1. How does the desired velocity affect the behaviour of the agents during the evacuation?
+2. How does the desired velocity affect the evacuation time?
+3. How does the panic level affect the behaviour of the agents during the evacuation?
+4. How does the panic level affect the evacuation time?
+5. How does the excitement factor affect the behaviour of the agents during the evacuation?
 
 
 ## Expected Results
 
-1. A higher panic level will probably cause the agents to behave less rationally and more impulsively.
-2. A high panic level should lead to a higher evacuation time.
-3. A higher excitement factor will probably cause the agents to take less informed decisions.
+1. A higher desired velocity will probably cause the agents to move faster.
+2. A higher desired velocity will probably lead to a smaller evacuation time.
+3. A higher panic level will probably cause the agents to behave less rationally and more impulsively.
+4. A high panic level should lead to a higher evacuation time.
+5. A higher excitement factor will probably cause the agents to take less informed decisions.
 
 
 ## References 
