@@ -10,6 +10,8 @@
 \usepackage{graphicx} 
 	\graphicspath{ {images/}{plots/} }
 \usepackage{subcaption}
+\usepackage[sort,comma,numbers]{natbib}
+	\bibliographystyle{unsrtnat}
 	
 \colorlet{ETHcolor1}{ETHc}
 \colorlet{ETHcolor2}{ETHh}
@@ -33,15 +35,15 @@
 \begin{frame}{Outline}
 	\begin{enumerate}
 		\item Introduction
-		
+		\smallskip
 		\item Motivation
-		
+		\smallskip
 		\item Research Questions
-		
+		\smallskip
 		\item Model
-		
+		\smallskip
 		\item Simulations
-		
+		\smallskip
 		\item Summary
 	\end{enumerate}
 \end{frame}
@@ -54,39 +56,35 @@
 	
 	Some examples:
 	\begin{itemize}
-		\item Jamaraat Bridge, Saudi Arabia, 2006.
-		\item Love Parade, Germany, 2010.
-		\item Grenfell Tower, UK, 2017.
+		\item Jamaraat Bridge, Saudi Arabia, 2006. \\
+		\item Love Parade, Germany, 2010. \\
+		\item Grenfell Tower, UK, 2017. \\
 	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{Motivation}
-	Understand the crowd dynamics in a simple evacuation scenario.
-	
-	\quad
-	
-	Minimize the danger and optimize with respect to safety.
-	
-	\quad
-	
-	Many proposed models ignore the decision-making of the agents.
-	
-	\quad
-	
-	We integrated the decision-making into a well-known model.
+	\begin{itemize}
+		\item Understand the crowd dynamics in a simple evacuation scenario. \\
+		\bigskip
+		\item Minimize the danger and optimize with respect to safety. \\
+		\bigskip
+		\item Many proposed models ignore the decision-making of the agents. \\
+		\bigskip
+		\item We integrated the decision-making into a well-known model.
+	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{Research Questions}
 	\begin{enumerate}
-		\item How does the \emph{desired velocity} affect the behaviour of the agents during the evacuation?
+		\item How does the \emph{desired velocity} affect the behaviour of the agents during the evacuation? \\
 		\smallskip
-		\item How does the \emph{desired velocity} affect the evacuation time?
+		\item How does the \emph{desired velocity} affect the evacuation time? \\
 		\smallskip
-		\item How does the \emph{panic level} affect the behaviour of the agents during the evacuation?
+		\item How does the \emph{panic level} affect the behaviour of the agents during the evacuation? \\
 		\smallskip
-		\item How does the \emph{panic level} affect the evacuation time?
+		\item How does the \emph{panic level} affect the evacuation time? \\
 		\smallskip
 		\item How does the \emph{excitement factor} affect the behaviour of the agents during the evacuation?
 	\end{enumerate}
@@ -94,7 +92,7 @@
 
 
 \begin{frame}{Model}
-	The model used is the agent-based \emph{social force} model, proposed by Helbing et al.
+	The model used is the agent-based \emph{social force} model, proposed by \citet{Helbing2000}, with modifications from \cite{Zainuddin2010} and \cite{Wang2016}.
 	
 	\begin{figure}
 		\includegraphics[width=0.6\linewidth]{social_force.png}
@@ -102,10 +100,12 @@
 \end{frame}
 
 
-\begin{frame}{Model}
+\begin{frame}{Model -- Equations of Motion}
 	\begin{equation*}
 		m_i \frac{d\bm{v}_i}{dt}(t) = m_i \frac{\bm{v}_i^0(t) -\bm{v}_i(t)}{\tau_i} + \sum_{j(\neq i)}^{}\bm{f}_{ij}(t) + \sum_{w}^{}\bm{f}_{iw}(t) + \sum_{k}^{}\bm{f}_{ik}(t)
 	\end{equation*}
+	
+	\vfill
 	
 	\begin{itemize}
 		\item $m_i \frac{d\bm{v}_i}{dt}(t)$: total force
@@ -121,14 +121,16 @@
 \end{frame}
 
 
-\begin{frame}{Model}
+\begin{frame}{Model -- Forces}
 	\begin{equation*}
 	\begin{split}
-		\bm{f}_{ij}(t) & = \bm{f}_{ij}^{psych}(t) + \bm{f}_{ij}^{push}(t) + \bm{f}_{ij}^{frict}(t) \\
-		\bm{f}_{iw}(t) & = \bm{f}_{iw}^{psych}(t) + \bm{f}_{iw}^{push}(t) + \bm{f}_{iw}^{frict}(t) \\
+		\bm{f}_{ij}(t) & = \bm{f}_{ij}^{psych}(t) + \bm{f}_{ij}^{push}(t) + \bm{f}_{ij}^{frict}(t) \\[0.5em]
+		\bm{f}_{iw}(t) & = \bm{f}_{iw}^{psych}(t) + \bm{f}_{iw}^{push}(t) + \bm{f}_{iw}^{frict}(t) \\[0.5em]
 		\bm{f}_{ik}(t) & =\bm{f}_{ik}^{psych}(t)
 	\end{split}
 	\end{equation*}
+	
+	\vfill
 	
 	\begin{itemize}
 		\item $\bm{f}^{psych}(t)$: psychological force
@@ -140,10 +142,12 @@
 \end{frame}
 
 
-\begin{frame}{Model}
+\begin{frame}{Model -- Velocity}
 	\begin{equation*}
 		\bm{v}_i^0(t) = (1-p_i) \nu_i^0 \bm{e}_i^0(t) + p_i \bar{\bm{v}}_i^0(t)
 	\end{equation*}
+	
+	\vfill
 	
 	\begin{itemize}
 		\item $\nu_i^0$: desired velocity
@@ -157,7 +161,7 @@
 \end{frame}
 
 
-\begin{frame}{Model}
+\begin{frame}{Model -- Decision-making}
 	\begin{equation*}
 	\begin{split}
 		\bm{e}_i^0(t) & = - \nabla d_{k_i^*}(\bm{r}_i) \\
@@ -168,16 +172,14 @@
 	
 	Decision-making process:
 	\begin{enumerate}
-		\item Each agent has a field of view $[180^{\circ},360^{\circ}]$, depending on the excitement factor $E_i \in [0,1]$.
-		\smallskip
+		\item Each agent has a field of view $[180^{\circ},360^{\circ}]$, depending on the excitement factor $E_i \in [0,1]$. \\
 		\item He calculates the value $U_{ik}(t)$ of the visible exits, according to the distance and congestion of each exit.
-		\smallskip
 		\item He chooses the exit $k_i^*$ with the highest value and changes his direction $\bm{e}_i^0(t)$ accordingly.
 	\end{enumerate}
 \end{frame}
 
 
-\begin{frame}{Simulations - Desired Velocity}
+\begin{frame}{Simulations -- Desired Velocity}
 	For a desired velocity of $\nu_i^0 = 2.22 ms^{-1}$:
 	
 	\begin{figure}
@@ -188,7 +190,7 @@
 \end{frame}
 
 
-\begin{frame}{Simulations - Desired Velocity}
+\begin{frame}{Simulations -- Desired Velocity}
 	For a desired velocity of $\nu_i^0 = 2.22 ms^{-1}$:
 	
 	\begin{figure}
@@ -199,7 +201,7 @@
 \end{frame}
 
 
-\begin{frame}{Simulations - Desired Velocity}
+\begin{frame}{Simulations -- Desired Velocity}
 	For a desired velocity of $\nu_i^0 = 2.22 ms^{-1}$:
 	
 	\begin{figure}
@@ -210,7 +212,7 @@
 \end{frame}
 
 
-\begin{frame}{Simulations - Desired Velocity}
+\begin{frame}{Simulations -- Desired Velocity}
 	For a desired velocity of $\nu_i^0 = 2.22 ms^{-1}$:
 	
 	\begin{figure}
@@ -221,7 +223,7 @@
 \end{frame}
 
 
-\begin{frame}{Simulations - Desired Velocity}
+\begin{frame}{Simulations -- Desired Velocity}
 	For a desired velocity of $\nu_i^0 = 2.22 ms^{-1}$:
 	
 	\begin{figure}
@@ -232,7 +234,7 @@
 \end{frame}
 
 
-\begin{frame}{Simulations - Desired Velocity}
+\begin{frame}{Simulations -- Desired Velocity}
 	For a desired velocity of $\nu_i^0 = 2.22 ms^{-1}$:
 	
 	\begin{figure}
@@ -243,7 +245,7 @@
 \end{frame}
 
 
-\begin{frame}{Simulations - Desired Velocity}
+\begin{frame}{Simulations -- Desired Velocity}
 	For a desired velocity of $\nu_i^0 = [1.35,2.25]ms^{-1}$:
 	
 	\begin{figure}
@@ -253,7 +255,7 @@
 \end{frame}
 
 
-\begin{frame}{Simulations - Panic Level}
+\begin{frame}{Simulations -- Panic Level}
 	For a panic level of $p_i = 0.4$:
 	
 	\begin{figure}
@@ -264,7 +266,7 @@
 \end{frame}
 
 
-\begin{frame}{Simulations - Panic Level}
+\begin{frame}{Simulations -- Panic Level}
 	For a panic level of $p_i = 0.4$:
 	
 	\begin{figure}
@@ -275,7 +277,7 @@
 \end{frame}
 
 
-\begin{frame}{Simulations - Panic Level}
+\begin{frame}{Simulations -- Panic Level}
 	For a panic level of $p_i = 0.4$:
 	
 	\begin{figure}
@@ -286,7 +288,7 @@
 \end{frame}
 
 
-\begin{frame}{Simulations - Panic Level}
+\begin{frame}{Simulations -- Panic Level}
 	For a panic level of $p_i = 0.4$:
 	
 	\begin{figure}
@@ -297,7 +299,7 @@
 \end{frame}
 
 
-\begin{frame}{Simulations - Panic Level}
+\begin{frame}{Simulations -- Panic Level}
 	For a panic level of $p_i = 0.4$:
 	
 	\begin{figure}
@@ -308,7 +310,7 @@
 \end{frame}
 
 
-\begin{frame}{Simulations - Panic Level}
+\begin{frame}{Simulations -- Panic Level}
 	For a panic level of $p_i = 0.4$:
 	
 	\begin{figure}
@@ -319,17 +321,17 @@
 \end{frame}
 
 
-\begin{frame}{Simulations - Panic Level}
+\begin{frame}{Simulations -- Panic Level}
 	For a panic level of $p_i = [0,0.9]$:
 	
 	\begin{figure}
 	\centering
-	\includegraphics[width=.6\linewidth]{{demo_P}.eps}
+	\includegraphics[width=.7\linewidth]{{demo_P}.eps}
 	\end{figure}
 \end{frame}
 
 
-\begin{frame}{Simulations - Excitement Factor}
+\begin{frame}{Simulations -- Excitement Factor}
 	For an excitement factor of $E_i = 0.2$ (up) and $E_i = 0.8$ (down):
 	
 	\begin{figure}
@@ -344,7 +346,7 @@
 \end{frame}
 
 
-\begin{frame}{Simulations - Excitement Factor}
+\begin{frame}{Simulations -- Excitement Factor}
 	For an excitement factor of $E_i = 0.2$ (up) and $E_i = 0.8$ (down):
 	
 	\begin{figure}
@@ -359,7 +361,7 @@
 \end{frame}
 
 
-\begin{frame}{Simulations - Excitement Factor}
+\begin{frame}{Simulations -- Excitement Factor}
 	For an excitement factor of $E_i = 0.2$ (up) and $E_i = 0.8$ (down):
 	
 	\begin{figure}
@@ -374,7 +376,7 @@
 \end{frame}
 
 
-\begin{frame}{Simulations - Excitement Factor}
+\begin{frame}{Simulations -- Excitement Factor}
 	For an excitement factor of $E_i = 0.2$ (up) and $E_i = 0.8$ (down):
 	
 	\begin{figure}
@@ -391,27 +393,27 @@
 
 \begin{frame}{Research Questions}
 	\begin{enumerate}
-		\item A higher \emph{desired velocity} caused the agents to try and move with a higher velocity.
+		\item A higher \emph{desired velocity} caused the agents to try and move with a higher velocity. \\
 		\smallskip
-		\item A higher \emph{desired velocity} leads to accelerated evacuation, with diminishing returns.
+		\item A higher \emph{desired velocity} leads to accelerated evacuation, with diminishing returns. \\
 		\smallskip
-		\item A lower \emph{panic level} caused the agents to behave in a more individualistic way.
+		\item A lower \emph{panic level} caused the agents to behave in a more individualistic way. \\
 		\smallskip
-		\item There was a positive correlation between the \emph{panic level} and the evacuation time.
+		\item There was a positive correlation between the \emph{panic level} and the evacuation time. \\
 		\smallskip
-		\item A lower \emph{excitement factor} caused the agents to make well-informed decisions.
+		\item A lower \emph{excitement factor} caused the agents to make well-informed decisions. \\
 	\end{enumerate}
 \end{frame}
 
 
 \begin{frame}{Summary}
 	\begin{enumerate}
-		\item We stated some research questions.
-		\smallskip
-		\item We extended the model with the parameters relating to these questions.
-		\smallskip
-		\item We conducted simulations to answer our questions.
-		\smallskip
+		\item We stated some research questions. \\
+		\bigskip
+		\item We extended the model with the parameters relating to these questions. \\
+		\bigskip
+		\item We conducted simulations to answer our questions. \\
+		\bigskip
 		\item We compared with the results of previous work.
 	\end{enumerate}
 \end{frame}
@@ -419,17 +421,17 @@
 
 \begin{frame}{Further Ideas}
 	\begin{itemize}
-		\item An injury mechanism if the total force on an agent is too large. The injured agent could work as an obstacle to other agents or have different behaviour and parameters.
-		\smallskip
-		\item A memory mechanism for the agents, so that they consider previously seen exits.
-		\smallskip
+		\item An injury mechanism if the total force on an agent is too large. The injured agent could work as an obstacle to other agents or have different behaviour and parameters. \\
+		\bigskip
+		\item A memory mechanism for the agents, so that they consider previously seen exits. \\
+		\bigskip
 		\item A different pathfinding algorithm that considers the density of agents at every point.
 	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{References}
-	references here
+	\bibliography{references}
 \end{frame}
 
 
