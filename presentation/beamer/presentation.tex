@@ -50,9 +50,12 @@
 
 
 \begin{frame}{Introduction}
+	\pause
+	
 	Evacuation scenarios are (unfortunately) common occurrences.
 	
-	\quad
+	\bigskip
+	\pause
 	
 	Some examples:
 	\begin{itemize}
@@ -60,15 +63,23 @@
 		\item Love Parade, Germany, 2010. \\
 		\item Grenfell Tower, UK, 2017. \\
 	\end{itemize}
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.5\linewidth]{grenfell_tower.jpg}
+	\end{figure}
 \end{frame}
 
 
 \begin{frame}{Motivation}
+	\pause
+	
 	\begin{itemize}
 		\item Understand the crowd dynamics in a simple evacuation scenario. \\
 		\bigskip
 		\item Minimize the danger and optimize with respect to safety. \\
 		\bigskip
+		\pause
 		\item Many proposed models ignore the decision-making of the agents. \\
 		\bigskip
 		\item We integrated the decision-making into a well-known model.
@@ -76,27 +87,18 @@
 \end{frame}
 
 
-\begin{frame}{Research Questions}
-	\begin{enumerate}
-		\item How does the \emph{desired velocity} affect the behaviour of the agents during the evacuation? \\
-		\smallskip
-		\item How does the \emph{desired velocity} affect the evacuation time? \\
-		\smallskip
-		\item How does the \emph{panic level} affect the behaviour of the agents during the evacuation? \\
-		\smallskip
-		\item How does the \emph{panic level} affect the evacuation time? \\
-		\smallskip
-		\item How does the \emph{excitement factor} affect the behaviour of the agents during the evacuation?
-	\end{enumerate}
-\end{frame}
-
-
 \begin{frame}{Model}
-	The model used is the agent-based \emph{social force} model, proposed by \citet{Helbing2000}, with modifications from \cite{Zainuddin2010} and \cite{Wang2016}.
+	\pause
 	
-	\begin{figure}
-		\includegraphics[width=0.6\linewidth]{social_force.png}
-	\end{figure}
+	The agent-based \emph{social force} model, proposed by \citet{Helbing2000}, with modifications from \citet{Zainuddin2010} and \citet{Wang2016}.
+	
+	\begin{minipage}{.5\textwidth}
+			\centering
+			\includegraphics[width=0.9\linewidth]{social_force.png}
+	\end{minipage}\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{{demo_P-0.4_0200_4.000}.eps}
+	\end{minipage}
 \end{frame}
 
 
@@ -179,7 +181,28 @@
 \end{frame}
 
 
+\begin{frame}{Research Questions}
+	\pause
+	
+	\begin{enumerate}
+		\item How does the \emph{desired velocity} affect the behaviour of the agents during the evacuation? \\
+		\smallskip
+		\item How does the \emph{desired velocity} affect the evacuation time? \\
+		\smallskip
+		\pause
+		\item How does the \emph{panic level} affect the behaviour of the agents during the evacuation? \\
+		\smallskip
+		\item How does the \emph{panic level} affect the evacuation time? \\
+		\smallskip
+		\pause
+		\item How does the \emph{excitement factor} affect the behaviour of the agents during the evacuation?
+	\end{enumerate}
+\end{frame}
+
+
 \begin{frame}{Simulations -- Desired Velocity}
+	\pause
+	
 	For a desired velocity of $\nu_i^0 = 2.22 ms^{-1}$:
 	
 	\begin{figure}
@@ -255,7 +278,25 @@
 \end{frame}
 
 
+\begin{frame}{Research Questions -- Desired Velocity}
+	\pause
+	
+	\begin{itemize}
+		\item How does the desired velocity affect the behaviour of the agents during the evacuation? \\
+		\smallskip
+		\emph{A higher desired velocity caused the agents to try and move with a higher velocity.} \\
+		\bigskip
+		\pause
+		\item How does the desired velocity affect the evacuation time? \\
+		\smallskip
+		\emph{A higher desired velocity leads to accelerated evacuation, with diminishing returns.}
+	\end{itemize}
+\end{frame}
+
+
 \begin{frame}{Simulations -- Panic Level}
+	\pause
+	
 	For a panic level of $p_i = 0.4$:
 	
 	\begin{figure}
@@ -331,7 +372,25 @@
 \end{frame}
 
 
+\begin{frame}{Research Questions -- Panic Level}
+	\pause
+	
+	\begin{itemize}
+		\item How does the panic level affect the behaviour of the agents during the evacuation? \\
+		\smallskip
+		\emph{A lower panic level caused the agents to behave in a more individualistic way.} \\
+		\bigskip
+		\pause
+		\item How does the panic level affect the evacuation time? \\
+		\smallskip
+		\emph{There was a positive correlation between the panic level and the evacuation time.}
+	\end{itemize}
+\end{frame}
+
+
 \begin{frame}{Simulations -- Excitement Factor}
+	\pause
+	
 	For an excitement factor of $E_i = 0.2$ (up) and $E_i = 0.8$ (down):
 	
 	\begin{figure}
@@ -391,40 +450,27 @@
 \end{frame}
 
 
-\begin{frame}{Research Questions}
-	\begin{enumerate}
-		\item A higher \emph{desired velocity} caused the agents to try and move with a higher velocity. \\
+\begin{frame}{Research Questions -- Excitement Factor}
+	\pause
+	
+	\begin{itemize}
+		\item How does the excitement factor affect the behaviour of the agents during the evacuation? \\
 		\smallskip
-		\item A higher \emph{desired velocity} leads to accelerated evacuation, with diminishing returns. \\
-		\smallskip
-		\item A lower \emph{panic level} caused the agents to behave in a more individualistic way. \\
-		\smallskip
-		\item There was a positive correlation between the \emph{panic level} and the evacuation time. \\
-		\smallskip
-		\item A lower \emph{excitement factor} caused the agents to make well-informed decisions. \\
-	\end{enumerate}
-\end{frame}
-
-
-\begin{frame}{Summary}
-	\begin{enumerate}
-		\item We stated some research questions. \\
-		\bigskip
-		\item We extended the model with the parameters relating to these questions. \\
-		\bigskip
-		\item We conducted simulations to answer our questions. \\
-		\bigskip
-		\item We compared with the results of previous work.
-	\end{enumerate}
+		\emph{A lower excitement factor caused the agents to make well-informed decisions.}
+	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{Further Ideas}
+	\pause
+	
 	\begin{itemize}
 		\item An injury mechanism if the total force on an agent is too large. The injured agent could work as an obstacle to other agents or have different behaviour and parameters. \\
 		\bigskip
+		\pause
 		\item A memory mechanism for the agents, so that they consider previously seen exits. \\
 		\bigskip
+		\pause
 		\item A different pathfinding algorithm that considers the density of agents at every point.
 	\end{itemize}
 \end{frame}
