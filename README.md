@@ -47,4 +47,4 @@ By varying these parameters we would like to simulate the evacuation procedure a
 
 [3] Wang et al. (2016): Pedestrians’ behavior in emergency evacuation: Modeling and simulation
 
-[4] Hardmeier, Jenal ,Kueng, Thaler (2012): [Modelling Situations of Evacuation in a Multi-level Building](https://github.com/msssm/MultiLevelEvacuation_with_custom_C_code)
+[4] Hardmeier, Jenal, Kueng, Thaler (2012): [Modelling Situations of Evacuation in a Multi-level Building](https://github.com/msssm/MultiLevelEvacuation_with_custom_C_code)
